@@ -1,6 +1,8 @@
 
 # react-horizontal-carousel
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/rohmanhm/react-horizontal-carousel.svg)](https://greenkeeper.io/)
+
 Clone this repo if you want to start prototyping a component and then run:
 
 ```
