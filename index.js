@@ -29,8 +29,8 @@ class HorizontalCarousel extends React.Component {
     const canvas = document.querySelectorAll(`.hc-canvas li`)[index]
     const canvasLeft = canvas.offsetLeft
 
-    const group = document.querySelector('.hc-canvas ol')
-    group.style.marginLeft = `-${canvasLeft}px`
+    const group = document.querySelector('.hc-canvas')
+    group.scrollLeft = canvasLeft
   }
 
   renderSlideThumbnails = () => {
