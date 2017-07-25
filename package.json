@@ -7,6 +7,7 @@
     ]
   },
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "prop-types": "^15.5.10",
     "react-fatigue-dev": "github:tj/react-fatigue-dev",
     "styled-components": "^2.1.1"
