@@ -1,7 +1,46 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import debounce from 'lodash.debounce'
-import { HCCanvas, HCThumbnails } from './styled'
+import styled from 'styled-components'
+
+const HCCanvas = styled.div`
+  height: ${props => props.height ? props.height : 400}px;
+  width: ${props => props.width ? props.width : 800}px;
+  overflow-y: hidden;
+  padding: 0;
+  margin-bottom: 20px;
+  ol {
+    display: inline-flex;
+    padding: 0;
+    li {
+      margin: 0 ${props => props.gutter ? props.gutter : 10}px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+`
+
+const HCThumbnails = styled.div`
+  .list {
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+`
+
+const DivImg = styled.div`
+  background-position: center;
+  background-image: url('${props => props.src}');
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+`
 
 class HorizontalCarousel extends React.Component {
   static propTypes = {
@@ -115,11 +154,11 @@ class HorizontalCarousel extends React.Component {
         className="list"
         key={`hc-thumbnails-contents-${url}`}
       >
-        <img src={url}/>
+        <DivImg src={url}/>
       </div>
     ))
 
-    return <div className="hc-wrapper">{divContents}</div>
+    return <div className="hc-thumbnails-lists">{divContents}</div>
   }
 
   /**
