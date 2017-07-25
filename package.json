@@ -1,0 +1,17 @@
+{
+  "name": "react-fatigue-dev-boiler",
+  "version": "0.0.1",
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "dependencies": {
+    "prop-types": "^15.5.10",
+    "react-fatigue-dev": "github:tj/react-fatigue-dev",
+    "styled-components": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.23.0"
+  }
+}
