@@ -12,7 +12,11 @@ class App extends Component {
 
     return (
       <div>
-        <HorizontalCarousel width={800} contents={contents} />
+        <HorizontalCarousel
+          width={800}
+          contents={contents}
+          animation={true}
+        />
       </div>
     )
   }

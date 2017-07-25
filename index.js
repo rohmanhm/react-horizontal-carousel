@@ -7,11 +7,24 @@ class HorizontalCarousel extends React.Component {
     contents: PropTypes.array.isRequired,
     width: PropTypes.number,
     height: PropTypes.number,
-    gutter: PropTypes.number
+    gutter: PropTypes.number,
+    animation: PropTypes.bool
   }
 
   constructor (props) {
     super(props)
+    this.state = {
+      leftActiveCanvas: 0
+    }
+  }
+
+  componentWillUpdate (nextProps, nextState) {
+    const group = document.querySelector('.hc-canvas')
+    if (this.state.leftActiveCanvas > nextState.leftActiveCanvas) {
+      this.animateScrollLeft(group, nextState.leftActiveCanvas, -10)
+    } else {
+      this.animateScrollLeft(group, nextState.leftActiveCanvas)
+    }
   }
 
   renderSlideCanvas = () => {
@@ -25,12 +38,32 @@ class HorizontalCarousel extends React.Component {
     return <ol>{liContents}</ol>
   }
 
+  animateScrollLeft = (el, leftCount, acc = 10) => {
+    let time = this.state.leftActiveCanvas
+    const interval = window.setInterval(() => {
+      time += acc
+
+      if (time < 0) {
+        return window.clearInterval(interval)
+      }
+
+      el.scrollLeft = time
+      if (time >= leftCount && acc > 0 || time <= leftCount && acc < 0) {
+        el.scrollLeft = leftCount
+        return window.clearInterval(interval)
+      }
+    }, 1)
+  }
+
   handleThumbnailClick = (event, index) => {
     const canvas = document.querySelectorAll(`.hc-canvas li`)[index]
     const canvasLeft = canvas.offsetLeft
-
-    const group = document.querySelector('.hc-canvas')
-    group.scrollLeft = canvasLeft
+    if (this.props.animation) {
+      this.setState({ leftActiveCanvas: canvasLeft })
+    } else {
+      const group = document.querySelector('.hc-canvas')
+      group.scrollLeft = canvasLeft
+    }
   }
 
   renderSlideThumbnails = () => {
