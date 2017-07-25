@@ -1,6 +1,18 @@
 {
-  "name": "react-fatigue-dev-boiler",
+  "name": "react-horizontal-carousel",
+  "description": "React Slider Horizontal Carousel",
   "version": "0.0.1",
+  "main": "build/index.js",
+  "author": "Roman Masyhar <mhrohman@live.com>",
+  "repository": "https://github.com/rohmanhm/react-horizontal-carousel.git",
+  "keywords": [
+    "react",
+    "component",
+    "carousel",
+    "horizontal",
+    "slider"
+  ],
+  "license": "BSD3-Clause",
   "browserify": {
     "transform": [
       "babelify"
